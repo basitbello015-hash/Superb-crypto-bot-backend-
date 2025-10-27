@@ -18,6 +18,5 @@ numpy==1.24.3
 pandas==2.0.3
 
 # Crypto trading libs
-pybit==1.4.6
-bybit==0.2.12
+pybit==2.4.0
 ccxt==4.3.88
