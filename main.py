@@ -179,12 +179,13 @@ def get_status():
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Status error: {str(e)}")
-
-
 @app.get("/accounts")
-def get_aat(raw[4])  # close price
-                    except Exception:
-                        pass
+def get_accounts():
+    try:
+        with open(ACCOUNTS_FILE, "r") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return []
                 
                 # Try each item
                 for it in raw:
