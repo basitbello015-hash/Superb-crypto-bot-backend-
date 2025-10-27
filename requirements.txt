@@ -6,3 +6,10 @@ pydantic==2.7.4
 pybit==2.0.0
 numpy==1.24.3
 pandas==2.0.3
+setuptools
+wheel
+fastapi
+uvicorn
+requests
+pandas
+python-dotenv
