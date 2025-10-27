@@ -9,3 +9,6 @@ pandas==2.0.3
 setuptools>=65.5.0
 wheel>=0.38.0
 pip>=23.0
+httpx
+bybit
+ccxt
