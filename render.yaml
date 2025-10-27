@@ -1,4 +1,4 @@
-services:
+aservices:
   - type: web
     name: mgx-crypto-bot-backend
     env: python
@@ -16,3 +16,9 @@ services:
       name: mgx-bot-data
       mountPath: /app/data
       sizeGB: 1
+services:
+  - type: web
+    name: Superb-crypto-bot-backend
+    env: python
+    buildCommand: pip install --upgrade pip setuptools wheel && pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
