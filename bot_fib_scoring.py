@@ -9,7 +9,7 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple
 
 # IMPORTANT: pybit unified_trading HTTP client
-from pybit.unified_trading import HTTP
+from bybit.unified_trading import HTTP
 
 # -------------------- CONFIG --------------------
 
