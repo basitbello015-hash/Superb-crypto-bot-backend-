@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from services.history_service import get_dashboard_data
+from services.history_service import get_history
 
 router = APIRouter()
 
