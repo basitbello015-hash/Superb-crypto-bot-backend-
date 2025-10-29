@@ -1,4 +1,4 @@
-def get_dashboard_data():
+def get_history():
     return {
         "profit": 124.5,
         "openTrades": 2,
