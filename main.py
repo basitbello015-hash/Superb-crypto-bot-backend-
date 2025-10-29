@@ -27,10 +27,10 @@ app = FastAPI(
 # CORS middleware to allow frontend connections
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://aitrader.mgx.world"],  # In production, replace with your specific frontend domain
+    allow_origins=["*"],  # In production, replace with your specific frontend domain
     allow_credentials=True,
-    allow_methods=["https://aitrader.mgx.world"],
-    allow_headers=["https://aitrader.mgx.world"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 BC = BotController()
