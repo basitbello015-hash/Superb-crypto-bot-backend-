@@ -35,7 +35,7 @@ app = FastAPI(
 # -----------------------
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Replace with frontend URL when stable
+    allow_origins=["https://aitrader.mgx.world/"],  # Replace with frontend URL when stable
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
