@@ -1,16 +1,16 @@
-from bot_fib_scoring import BC
+from bot_fib_scoring import BotController
 
 def get_status():
-    return {"running": BC.is_running()}
+    return {"running": BotController.is_running()}
 
 def start_bot():
-    if BC.is_running():
+    if BotController.is_running():
         return {"status": "already running"}
-    BC.start()
+    BotController.start()
     return {"status": "bot started"}
 
 def stop_bot():
-    if not BC.is_running():
+    if not BotController.is_running():
         return {"status": "already stopped"}
-    BC.stop()
+    BotController.stop()
     return {"status": "bot stopped"}
