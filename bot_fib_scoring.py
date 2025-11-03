@@ -59,8 +59,8 @@ TRADE_SETTINGS = {
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-ACCOUNTS_FILE = os.path.join(BASE_DIR, "accounts.json")
-TRADES_FILE = os.path.join(BASE_DIR, "trades.json")
+ACCOUNTS_FILE = os.path.join(BASE_DIR, "app/accounts.json")
+TRADES_FILE = os.path.join(BASE_DIR, "app/trades.json")
 
 # Ensure files exist
 for f in [ACCOUNTS_FILE, TRADES_FILE]:
