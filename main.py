@@ -40,7 +40,13 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+# -----------------------
+# Root Endpoint
+# -----------------------
+@app.get("/")
+def root():
+    return {"message": "MGX Trading Bot Backend is running!"}
+    
 # -----------------------
 # Bot Controller and Price Manager
 # -----------------------
