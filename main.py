@@ -132,7 +132,7 @@ async def startup_event():
 # -----------------------
 @app.get("/api/test-write")
 def test_write():
-    """Check if the backend can write to the filesystem (for accounts.json)."""
+    """Check if the backend can write to the filesystem (for app/accounts.json)."""
     try:
         test_file = "accounts_test.json"
         with open(test_file, "w") as f:
