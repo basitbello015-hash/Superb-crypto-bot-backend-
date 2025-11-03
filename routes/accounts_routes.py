@@ -29,12 +29,9 @@ def list_accounts():
 
 @router.post("/")
 def create_account(data: AccountModel):
-    """Add a new trading account."""
-    try:
-        result = add_account(data.dict())
-        return {"success": True, "message": "Account added successfully", "account": result["account"]}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    add_account(data.dict())           # add to SQLite
+    accounts = get_accounts()          # get updated list
+    return {"success": True, "accounts": accounts}
 
 
 @router.delete("/{account_id}")
