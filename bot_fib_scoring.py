@@ -57,8 +57,16 @@ TRADE_SETTINGS = {
     "dry_run": True,
 }
 
-ACCOUNTS_FILE = "accounts.json"
-TRADES_FILE = "trades.json"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+ACCOUNTS_FILE = os.path.join(BASE_DIR, "accounts.json")
+TRADES_FILE = os.path.join(BASE_DIR, "trades.json")
+
+# Ensure files exist
+for f in [ACCOUNTS_FILE, TRADES_FILE]:
+    if not os.path.exists(f):
+        with open(f, "w") as fp:
+            fp.write("[]")
 
 # -------------------- Utilities --------------------
 
