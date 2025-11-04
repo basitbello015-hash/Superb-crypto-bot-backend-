@@ -130,7 +130,7 @@ async def startup_event():
 # -----------------------
 # Test write endpoint
 # -----------------------
-@app.get("/api/test-write")
+@app.get("/test-write")
 def test_write():
     """Check if the backend can write to the filesystem (for app/accounts.json)."""
     try:
