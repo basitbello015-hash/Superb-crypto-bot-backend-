@@ -29,8 +29,9 @@ def list_accounts():
 @router.post("/")
 def create_account(data: AccountModel):
     print("📩 Incoming account data:", data.dict())
-    result = add_account(data.dict())
-    return {"success": True, "message": "Account added", "account": result["account"]}
+    add_account(data.dict())
+    accounts = get_accounts()
+    return {"success": True, "message": "Account added", "account": accounts[-1]}  # last added
 
 
 @router.delete("/{account_id}")
