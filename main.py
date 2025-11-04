@@ -113,11 +113,11 @@ async def price_loop():
 # -----------------------
 # Include Routers
 # -----------------------
-app.include_router(config_router, prefix="/api/config", tags=["Config"])
+app.include_router(config_router, prefix="/config", tags=["Config"])
 app.include_router(accounts_router, prefix="/accounts", tags=["Accounts"])
-app.include_router(bot_router, prefix="/api/bot", tags=["Bot"])
-app.include_router(dashboard_router, prefix="/api/dashboard", tags=["Dashboard"])
-app.include_router(history_router, prefix="/api/history", tags=["History"])
+app.include_router(bot_router, prefix="/bot", tags=["Bot"])
+app.include_router(dashboard_router, prefix="/dashboard", tags=["Dashboard"])
+app.include_router(history_router, prefix="/history", tags=["History"])
 
 # -----------------------
 # Startup Event
