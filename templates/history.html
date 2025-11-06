@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+{% set active = "history" %}
+{% set title = "History" %}
+
+<h2>Trade History</h2>
+
+<div class="card">
+    <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+            <tr style="background: #273447;">
+                <th style="padding: 8px;">Date</th>
+                <th>Pair</th>
+                <th>Side</th>
+                <th>Status</th>
+                <th>Profit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in history %}
+                <tr style="border-bottom: 1px solid #333;">
+                    <td style="padding: 8px;">{{ t.date }}</td>
+                    <td>{{ t.symbol }}</td>
+                    <td>{{ t.side }}</td>
+                    <td>{{ t.status }}</td>
+                    <td style="color: {{ 'lime' if t.profit >= 0 else 'red' }};">
+                        {{ t.profit }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if history|length == 0 %}
+        <p>No trade history available yet.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
