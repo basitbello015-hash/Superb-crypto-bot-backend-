@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+{% set active = "accounts" %}
+{% set title = "Accounts" %}
+
+<h2>Exchange Accounts</h2>
+
+<div class="card">
+    <h3>Connected Accounts</h3>
+
+    {% if accounts|length == 0 %}
+        <p>No accounts added yet.</p>
+    {% else %}
+        <ul>
+            {% for acc in accounts %}
+                <li style="margin-bottom: 8px;">
+                    <strong>{{ acc.apiKey }}</strong>
+                    <button onclick="deleteAccount('{{ acc.id }}')" style="margin-left: 10px;">Delete</button>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+
+<div class="card">
+    <h3>Add New Account</h3>
+    <form onsubmit="addAccount(event)">
+        <label>API Key:</label><br>
+        <input type="text" id="apiKey"><br><br>
+
+        <label>API Secret:</label><br>
+        <input type="password" id="apiSecret"><br><br>
+
+        <button type="submit">Add Account</button>
+    </form>
+</div>
+
+<script>
+function addAccount(e) {
+    e.preventDefault();
+    const apiKey = document.getElementById("apiKey").value;
+    const apiSecret = document.getElementById("apiSecret").value;
+
+    fetch("/accounts/add?apiKey=" + apiKey + "&apiSecret=" + apiSecret, {
+        method: "POST"
+    }).then(() => location.reload());
+}
+
+function deleteAccount(id) {
+    fetch("/accounts/delete/" + id, { method: "DELETE" })
+        .then(() => location.reload());
+}
+</script>
+
+{% endblock %}
