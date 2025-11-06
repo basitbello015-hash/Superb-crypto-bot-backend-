@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+{% set active = "config" %}
+{% set title = "Config" %}
+
+<h2>Bot Configuration</h2>
+
+<div class="card">
+    <form method="post" action="/config/update">
+        <label>Exchange</label><br>
+        <input type="text" name="exchange" value="{{ config.exchange }}"><br><br>
+
+        <label>Strategy</label><br>
+        <input type="text" name="strategy" value="{{ config.strategy }}"><br><br>
+
+        <label>Risk Level</label><br>
+        <input type="text" name="risk" value="{{ config.risk }}"><br><br>
+
+        <button type="submit">Save Config</button>
+    </form>
+</div>
+
+{% endblock %}
