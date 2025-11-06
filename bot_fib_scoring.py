@@ -37,7 +37,7 @@ ALLOWED_COINS = [
 # Risk rules with config override
 RISK_RULES = {
     "stop_loss": CONFIG.get("stopLoss", -1.0),
-    "max_hold": CONFIG.get("maxHold", 24 * 60 * 60),
+    "max_hold": CONFIG.get("maxHold", 30 * 60),
 }
 
 SCORE_SETTINGS = {
