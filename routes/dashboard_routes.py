@@ -1,8 +1,17 @@
-from fastapi import APIRouter
+# routes/dashboard_router.py
+from fastapi import APIRouter, Request
+from fastapi.templating import Jinja2Templates
+
 from services.dashboard_service import get_dashboard_data
 
-router = APIRouter()
+templates = Jinja2Templates(directory="templates")
 
-@router.get("")
-def dashboard():
-    return get_dashboard_data()
+router = APIRouter(prefix="/dashboard", tags=["Dashboard"])
+
+@router.get("/")
+def dashboard(request: Request):
+    data = get_dashboard_data()
+    return templates.TemplateResponse(
+        "dashboard.html",
+        {"request": request, "data": data}
+    )
