@@ -2,7 +2,7 @@
   "exchange": "Bybit",
   "strategy": "scalping",
   "stopLoss": -1.0,
-  "maxHold": 86400,
+  "maxHold": 1800,
   "rsiPeriod": 14,
   "rsiOversold": 35,
   "rsiOverbought": 65,
