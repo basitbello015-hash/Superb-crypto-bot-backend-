@@ -48,7 +48,7 @@ SCORE_SETTINGS = {
     "momentum_entry_threshold_pct": CONFIG.get("momentumEntryThreshold", 0.1),
     "momentum_strong_pct": CONFIG.get("momentumStrong", 0.5),
     "momentum_very_strong_pct": CONFIG.get("momentumVeryStrong", 1.5),
-    "max_price_allowed": CONFIG.get("maxPriceAllowed", 1.2),
+    "max_price_allowed": CONFIG.get("maxPriceAllowed", 5.0),
     "score_weights": {
         "rsi": CONFIG.get("scoreWeightRsi", 1),
         "momentum": CONFIG.get("scoreWeightMomentum", 1),
