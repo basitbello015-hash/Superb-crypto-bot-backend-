@@ -1,0 +1,18 @@
+button {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+input {
+    padding: 6px;
+    width: 250px;
+    margin-top: 4px;
+}
