@@ -1,28 +1,43 @@
-import time
-from fastapi import HTTPException, Depends
-from fastapi.security import OAuth2PasswordBearer
-from jose import jwt
+# jwt_utils.py
 import os
+from datetime import datetime, timedelta
+from typing import Optional, Dict, Any
 
-SECRET_KEY = os.getenv("JWT_SECRET", "MGX_SUPER_SECRET")
+from jose import jwt, JWTError
+
+SECRET_KEY = os.getenv("JWT_SECRET", "supersecret123")
+REFRESH_SECRET = os.getenv("JWT_REFRESH_SECRET", "superrefreshsecret456")
+
 ALGORITHM = "HS256"
-EXPIRE_MIN = 60 * 24  # 24 hours
-
-oauth2 = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
-
-
-def create_access_token(data: dict):
-    payload = data.copy()
-    payload["exp"] = time.time() + EXPIRE_MIN
-
-    return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
+ACCESS_EXPIRE_MINUTES = 15
+REFRESH_EXPIRE_DAYS = 7
 
 
-def verify_token(token: str = Depends(oauth2)):
+def create_access_token(data: dict) -> str:
+    to_encode = data.copy()
+    expire = datetime.utcnow() + timedelta(minutes=ACCESS_EXPIRE_MINUTES)
+    to_encode.update({"exp": expire})
+    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+
+
+def create_refresh_token(data: dict) -> str:
+    to_encode = data.copy()
+    expire = datetime.utcnow() + timedelta(days=REFRESH_EXPIRE_DAYS)
+    to_encode.update({"exp": expire})
+    return jwt.encode(to_encode, REFRESH_SECRET, algorithm=ALGORITHM)
+
+
+def verify_access_token(token: str) -> Optional[Dict[str, Any]]:
     try:
-        decoded = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        return decoded
-    except jwt.ExpiredSignatureError:
-        raise HTTPException(status_code=401, detail="Token expired")
-    except Exception:
-        raise HTTPException(status_code=401, detail="Invalid token")
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        return payload
+    except JWTError:
+        return None
+
+
+def verify_refresh_token(token: str) -> Optional[Dict[str, Any]]:
+    try:
+        payload = jwt.decode(token, REFRESH_SECRET, algorithms=[ALGORITHM])
+        return payload
+    except JWTError:
+        return None
