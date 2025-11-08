@@ -20,3 +20,15 @@ pandas==2.0.3
 # Crypto trading libs
 pybit==5.6.2
 ccxt==4.3.88
+
+# Authentication & security (REQUIRED)
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]==3.3.0
+python-multipart==0.0.9
+
+# Templates & static handling
+jinja2==3.1.4
+aiofiles==23.2.1
+
+# WebSockets support
+websockets==12.0
