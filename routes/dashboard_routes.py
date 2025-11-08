@@ -1,17 +1,20 @@
 # routes/dashboard_router.py
-from fastapi import APIRouter, Request
-from fastapi.templating import Jinja2Templates
 
+from fastapi import APIRouter
 from services.dashboard_service import get_dashboard_data
 
-templates = Jinja2Templates(directory="templates")
-
-router = APIRouter(prefix="/dashboard", tags=["Dashboard"])
+router = APIRouter(tags=["Dashboard"])
 
 @router.get("/")
-def dashboard(request: Request):
-    data = get_dashboard_data()
-    return templates.TemplateResponse(
-        "dashboard.html",
-        {"request": request, "data": data}
-    )
+def dashboard():
+    """
+    Returns live dashboard statistics for the frontend.
+    Example:
+    {
+        "profit": 124.5,
+        "openTrades": 2,
+        "balance": 1050.75,
+        "dailyChange": 3.1
+    }
+    """
+    return get_dashboard_data()
