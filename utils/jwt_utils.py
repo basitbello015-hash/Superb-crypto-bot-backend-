@@ -1,4 +1,4 @@
-# jwt_utils.py
+# utils/jwt_utils.py
 import os
 from datetime import datetime, timedelta
 from typing import Optional, Dict, Any
@@ -6,11 +6,10 @@ from typing import Optional, Dict, Any
 from jose import jwt, JWTError
 
 SECRET_KEY = os.getenv("JWT_SECRET", "supersecret123")
-REFRESH_SECRET = os.getenv("JWT_REFRESH_SECRET", "superrefreshsecret456")
-
+REFRESH_SECRET = os.getenv("JWT_REFRESH_SECRET", "superrefresh123")
 ALGORITHM = "HS256"
-ACCESS_EXPIRE_MINUTES = 15
-REFRESH_EXPIRE_DAYS = 7
+ACCESS_EXPIRE_MINUTES = int(os.getenv("ACCESS_EXPIRE_MINUTES", "15"))
+REFRESH_EXPIRE_DAYS = int(os.getenv("REFRESH_EXPIRE_DAYS", "7"))
 
 
 def create_access_token(data: dict) -> str:
