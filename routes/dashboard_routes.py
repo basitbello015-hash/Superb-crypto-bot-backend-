@@ -1,9 +1,10 @@
 # routes/dashboard_router.py
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends 
 from services.dashboard_service import get_dashboard_data
+from auth.deps import require_auth
 
-router = APIRouter(tags=["Dashboard"])
+router = APIRouter(prefix="/api/dashboard", tags=["Dashboard"], dependencies=[Depends(require_auth)])
 
 @router.get("/")
 def dashboard():
