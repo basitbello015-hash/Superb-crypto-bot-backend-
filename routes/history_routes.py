@@ -8,7 +8,7 @@ from services.history_service import (
     append_trade,
 )
 
-router = APIRouter(tags=["History"], dependencies=[Depends(verify_token)])
+router = APIRouter(tags=["History"])
 
 
 class TradeOut(BaseModel):
