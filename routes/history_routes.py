@@ -2,7 +2,6 @@
 from fastapi import APIRouter, Depends, Query, HTTPException
 from typing import List, Optional
 from pydantic import BaseModel
-from utils.jwt_utils import verify_token  # JWT dependency provided earlier
 from services.history_service import (
     get_trades,
     get_trade_by_id,
