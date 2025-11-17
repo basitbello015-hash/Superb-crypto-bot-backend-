@@ -11,7 +11,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from bot_fib_scoring import BotController, ALLOWED_COINS
 
 # Routers
-from routes.auth_routes import router as auth_router
 from routes.config_routes import router as config_router
 from routes.accounts_routes import router as accounts_router
 from routes.bot_routes import router as bot_router
@@ -41,11 +40,7 @@ app = FastAPI(
 # -----------------------
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://aitrader.mgx.world",
-        "http://localhost:5173",
-        "http://localhost:3000",
-    ],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -129,7 +124,6 @@ async def price_loop():
 # -----------------------
 # Include All Routers
 # -----------------------
-app.include_router(auth_router, prefix="/api/auth", tags=["Auth"])
 app.include_router(config_router, prefix="/api/config", tags=["Config"])
 app.include_router(accounts_router, prefix="/api/accounts", tags=["Accounts"])
 app.include_router(bot_router, prefix="/api/bot", tags=["Bot"])
