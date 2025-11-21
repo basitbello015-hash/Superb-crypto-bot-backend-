@@ -255,13 +255,13 @@ class BotController:
         })
         
         TRADE_SETTINGS.update({
-            "trade_allocation_pct": CONFIG.get("tradeAllocation", 0.01),
+            "trade_allocation_pct": CONFIG.get("tradeAllocation", 100),
             "min_trade_amount": CONFIG.get("minTradeAmount", 5.0),
             "use_market_order": CONFIG.get("useMarketOrder", True),
             "test_on_testnet": CONFIG.get("testOnTestnet", False),
             "scan_interval": CONFIG.get("scanInterval", 10),
             "debug_raw_responses": CONFIG.get("debugRawResponses", False),
-            "dry_run": CONFIG.get("dryRun", True),
+            "dry_run": CONFIG.get("dryRun", False),
         })
         
         self.log("Configuration reloaded")
