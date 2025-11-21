@@ -655,7 +655,7 @@ class BotController:
         return False, None, last_err or "unrecognized_balance_shape"
 
     def _place_market_order(self, client: HTTP, symbol: str, side: str, qty: float, price_hint: Optional[float] = None) -> Dict[str, Any]:
-        if TRADE_SETTINGS.get('dry_run', True):
+        if TRADE_SETTINGS.get('dry_run', False):
             executed_price = float(price_hint) if price_hint is not None else None
             resp = {
                 "simulated": True, 
